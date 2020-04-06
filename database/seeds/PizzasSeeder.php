@@ -13,6 +13,7 @@ class PizzasSeeder extends Seeder
      */
     public function run()
     {
+        // TODO: Use Faker instead
         DB::table('pizzas')->insert(
             [
                 [
