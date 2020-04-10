@@ -18,6 +18,8 @@ class CreatePizzasTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('pictureFilename')->nullable();
+            $table->decimal('basePrice')->nullable();
+            $table->enum('baseCurrency', ['USD', 'EUR']);
 
             $table->unique('name');
             $table->softDeletes();
