@@ -13,58 +13,79 @@ class PizzasSeeder extends Seeder
      */
     public function run()
     {
-        // TODO: Use Faker instead
+        $faker = Faker\Factory::create();
+
         DB::table('pizzas')->insert(
             [
                 [
                     'name' => 'Margherita',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'm.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'm.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Prosciutto e Funghi',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'pef.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'pef.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Marinara',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'ma.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'ma.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Quattro Stagioni',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'qs.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'qs.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Capricciosa',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'c.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'c.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Quattro Formaggi',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'qf.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'qf.png',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Vegetariana',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'v.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'v.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Diavola',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'd.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'd.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Boscaiola',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'b.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'b.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ],
                 [
                     'name' => 'Frutti di Mare',
-                    'description' => self::getRandomWords(),
-                    'pictureFilename' => 'fdm.jpg'
+                    'description' => $faker->realText(),
+                    'pictureFilename' => 'fdm.jpg',
+                    'basePrice' => 9.99,
+                    'baseCurrency' => 'USD'
                 ]
             ]
         );
@@ -81,24 +102,5 @@ class PizzasSeeder extends Seeder
                 $toppings->random(rand(3, 5))->pluck('id')->toArray()
             );
         });
-    }
-
-    /**
-     * @return string
-     * 
-     * Returns concatenated set of randomly generated substrings to imitate words for a text description
-     */
-    public static function getRandomWords()
-    {
-        $str = '';
-        $dict = array_merge(range('a', 'z'));
-        
-        for ($i = 0; $i < 10; $i++) {
-            shuffle($dict);
-            $word = substr(implode($dict), 0, rand(3, 10));
-            $str .= ucfirst($word) . ' ';
-        }
-
-        return $str;
     }
 }
