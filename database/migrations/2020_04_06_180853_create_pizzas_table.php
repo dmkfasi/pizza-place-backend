@@ -16,11 +16,12 @@ class CreatePizzasTable extends Migration
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('pictureFilename')->nullable();
             $table->decimal('basePrice')->nullable();
             $table->enum('baseCurrency', ['USD', 'EUR']);
 
+            $table->index('name');
             $table->unique('name');
             $table->softDeletes();
             $table->engine = 'InnoDB';
