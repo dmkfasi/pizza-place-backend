@@ -15,7 +15,9 @@ class PizzaController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return Pizza::with(['sizes', 'toppings'])->get();
+        // TODO caching stuff
+        return Pizza::with(['sizes', 'toppings'])
+            ->get();
     }
 
     /**
@@ -45,9 +47,10 @@ class PizzaController extends \App\Http\Controllers\Controller
      * @param  \App\Pizza  $pizza
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $r)
+    public function show(Request $request)
     {
-        return Pizza::where('name', $r->route('Pizza'))
+        // TODO caching stuff
+        return Pizza::where('name', $request->route('Pizza'))
             ->with(['sizes', 'toppings'])
             ->get();
     }
