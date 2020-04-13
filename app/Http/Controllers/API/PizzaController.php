@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Pizza;
+use App\Repositories\PizzaRepository;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 
 class PizzaController extends \App\Http\Controllers\Controller
 {
+    public function __construct(PizzaRepository $pizza)
+    {
+        $this->pizza = $pizza;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +20,7 @@ class PizzaController extends \App\Http\Controllers\Controller
     public function index()
     {
         // TODO caching stuff
-        return Pizza::with(['sizes', 'toppings'])
-            ->get();
+        return $this->pizza->getAll();
     }
 
     /**
@@ -50,9 +53,7 @@ class PizzaController extends \App\Http\Controllers\Controller
     public function show(Request $request)
     {
         // TODO caching stuff
-        return Pizza::where('name', $request->route('Pizza'))
-            ->with(['sizes', 'toppings'])
-            ->get();
+        return $this->pizza->getAllByName($request->route('Pizza'));
     }
 
     /**
