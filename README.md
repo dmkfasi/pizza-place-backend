@@ -17,9 +17,12 @@
 Setup your local database config with .env and remote
 > heroku config:set DB_DATABASE=... DB_USERNAME=... DB_PASSWORD=...
 
-Then run locally
+Then run either locally or from Heroku shell
 > php artisan migrate:fresh && php artisan db:seed
 
 Afterwards it's time to push local git repository to remote Heroku branch, Procfile included.
 
 That's pretty much it at the moment.
+
+### Sample API JSON response
+[Observable here](https://pizza-place-backend.herokuapp.com/api/v1/Pizza)
