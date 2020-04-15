@@ -20,7 +20,9 @@ Setup your local database config with .env and remote
 Then run either locally or from Heroku shell
 > php artisan migrate:fresh && php artisan db:seed
 
-Afterwards it's time to push local git repository to remote Heroku branch, Procfile included.
+Afterwards it's time to push local git repository to remote Heroku branch, Procfile is included.
+
+Or use *make(1)* for rapid deployment, Makefile is included.
 
 That's pretty much it at the moment.
 
